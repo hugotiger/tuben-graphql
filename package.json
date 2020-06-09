@@ -1,0 +1,27 @@
+{
+  "name": "tuben-graphql",
+  "version": "1.0.0",
+  "description": "Experimental graphql-powered backend for Tuben.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "keywords": [],
+  "author": "Hugo Holm",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "apollo-datasource-rest": "^0.9.2",
+    "apollo-server": "^2.14.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
