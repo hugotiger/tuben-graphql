@@ -6,19 +6,21 @@ export class TripPlannerAPI extends RESTDataSource {
     this.baseURL = `http://api.sl.se/api2/TravelplannerV3_1/`;
   }
 
-  routeReducer({ Origin, Destination }) {
+  routeReducer({ Origin, Destination, type, dist }) {
     return {
       origin_name: Origin.name,
       dest_name: Destination.name,
       start_time: Origin.time,
       end_time: Destination.time,
+      type,
+      distance: dist,
     };
   }
 
   tripReducer({ tripId, LegList, duration }) {
-    const routes = LegList.Leg.map((route) => this.routeReducer(route));
+    const route_parts = LegList.Leg.map((route) => this.routeReducer(route));
     // TODO: tripId doesn't seem to be globally unique
-    return { id: tripId, duration, routes };
+    return { id: tripId, duration, route_parts };
   }
 
   async getTrip(originId, destId) {
