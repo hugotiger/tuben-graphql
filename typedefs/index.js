@@ -15,7 +15,7 @@ export const typeDefs = gql`
   }
   type Trip {
     id: ID!
-    duration: String!
+    duration: Int!
     route_parts: [Route!]!
   }
   type Route {
