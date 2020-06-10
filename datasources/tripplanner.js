@@ -1,4 +1,5 @@
 import { RESTDataSource } from "apollo-datasource-rest";
+import parseIsoDuration from "parse-iso-duration";
 
 export class TripPlannerAPI extends RESTDataSource {
   constructor() {
@@ -19,6 +20,8 @@ export class TripPlannerAPI extends RESTDataSource {
 
   tripReducer({ tripId, LegList, duration }) {
     const route_parts = LegList.Leg.map((route) => this.routeReducer(route));
+    // Converts from ISO-8061 to epoch time (seconds)
+    duration = parseIsoDuration(duration) / 1000;
     // TODO: tripId doesn't seem to be globally unique
     return { id: tripId, duration, route_parts };
   }
